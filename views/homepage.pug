@@ -1,0 +1,37 @@
+//- ** This is a sample of a pug template and how it uses the data passed to it from index.js.
+
+//- doctype html
+//- html 
+//-     head 
+//-         title= `${title}`
+//-         meta(name="viewport" content="width=device-width, initial-scale=1")
+//-         link(rel="stylesheet", href="/css/style.css")
+//-     body    
+//-         h1 Contacts
+//-         .cards 
+//-             each contact in data
+//-                 .card 
+//-                     h2.card__name #{contact.properties.firstname}  #{contact.properties.lastname}
+//-                     p.card__email #{contact.properties.email}
+
+doctype html
+html
+  head
+    title Home Page
+  body
+    h2 Existing Records for the Custom Object:
+    tr 
+    a(href="/update-cobj") Add more records to this table
+    if customObjectRecords && customObjectRecords.length
+      table
+        tr
+          th Name
+          th Bio
+          th Usage
+        each record in customObjectRecords
+          tr
+            td= record.properties.name 
+            td= record.properties.bio
+            td= record.properties.usage 
+    else
+      p No records found
